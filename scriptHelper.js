@@ -15,19 +15,19 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="">
     */
- }
- 
- function validateInput(testInput) {
+}
+
+function validateInput(testInput) {
     if (input === "") {
         return "Empty";
-      } else if (isNaN(input)) {
+    } else if (isNaN(input)) {
         return "Not a Number";
-      } else {
+    } else {
         return "Is a Number";
-      }
- }
- 
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    }
+}
+
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let pilotStatus = validateInput(pilot);
     let copilotStatus = validateInput(copilot);
     let fuelStatus = validateInput(fuelLevel);
@@ -37,12 +37,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
     if (fuelStatus === "Is a number" && cargoStatus === "Is a number") {
-        if (fuelStat < 10000) {
+        if (fuelLevel < 10000) {
             document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
         } else {
-            document.getElementById("fuelStatus").innerHTML ="Fuel level high enough for launch";
-        } 
-        if (cargoMass > 10000) {
+            document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
+        }
+        if (cargoLevel > 10000) {
             document.getElementById("cargoStatus").innerHTML = "Cargo mass too high for launch";
         } else {
             document.getElementById("cargoStatus").innerHTML = "Cargo mass too low for launch";
@@ -50,12 +50,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     } else {
         document.getElementById("fuelStatus").innerHTML = "Fuel level and cargo mass must be numbers";
     }
- }
- let faultyItems = document.getElementById("faultyItems");
- faultyItems.style.visibility = "visible";
+}
+let faultyItems = document.getElementById("faultyItems");
+faultyItems.style.visibility = "visible";
 
- if (fuelStatus === "Is a Number" && cargoStatus === "Is a Number")
- {
+if (fuelStatus === "Is a Number" && cargoStatus === "Is a Number") {
     if (fuelLevel < 10000) {
         document.getElementById("fuelStatus").innerHTML = "Fuel level toolow for launch";
         faultyItems.innerHTML += `<li>Fuel level too low for launch</li>`;
@@ -63,27 +62,27 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
     }
     if (cargoMass > 10000) {
-        document.getElementById("cargoStatus").innerHTML ="Cargo mass too high for launch";
+        document.getElementById("cargoStatus").innerHTML = "Cargo mass too high for launch";
         faultyItems.innerHTML += `<li>Cargo mass too high for launch</li>`;
-        } else {
-            document.getElementById("fuelStatus").innerHTML = "Fuel level and cargo mass must be numbers";
-            faultyItems.innerHTML += `<li>Fuel level and cargo mass must be numbers</li>`;
-        }
- }
- async function myFetch() {
-     let planetsReturned;
- 
-     planetsReturned = await fetch().then( function(response) {
-         });
- 
-     return planetsReturned;
- }
- 
- function pickPlanet(planets) {
- }
- 
- module.exports.addDestinationInfo = addDestinationInfo;
- module.exports.validateInput = validateInput;
- module.exports.formSubmission = formSubmission;
- module.exports.pickPlanet = pickPlanet; 
- module.exports.myFetch = myFetch;
+    } else {
+        document.getElementById("fuelStatus").innerHTML = "Fuel level and cargo mass must be numbers";
+        faultyItems.innerHTML += `<li>Fuel level and cargo mass must be numbers</li>`;
+    }
+}
+async function myFetch() {
+    let planetsReturned;
+
+    planetsReturned = await fetch().then(function (response) {
+    });
+
+    return planetsReturned;
+}
+
+function pickPlanet(planets) {
+}
+
+module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.validateInput = validateInput;
+module.exports.formSubmission = formSubmission;
+module.exports.pickPlanet = pickPlanet;
+module.exports.myFetch = myFetch;
