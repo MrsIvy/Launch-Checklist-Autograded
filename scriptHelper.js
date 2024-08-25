@@ -82,12 +82,28 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
     let planetsReturned;
+    let url = "https://handlers.education.launchcode.org/static/planets.json"
+    
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            throw new Error("network response was not ok");
+        }
+        return response.json();
+    })
+    .catch(error => {
+console.error("Fetch error", error);
+    });
+}
 
+myFetch().then(data => {
+    console.log("Planet data", data);
+})
+    
     planetsReturned = await fetch().then(function (response) {
     });
 
     return planetsReturned;
-}
+
 // Data is coming from API that need to be turned into JSON
 // don't set API to variable
 // use API directly
