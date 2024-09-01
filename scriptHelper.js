@@ -21,8 +21,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                      <li>Name: ${name}</li>
                      <li>Diameter: ${diameter}</li>
                      <li>Star: ${star}</li>
-                     <li>Distance from Earth: ${distanceFromEarth}</li>
-                     <li>Number of Moons: ${numberOfMoons}</li>
+                     <li>Distance from Earth: ${distance}</li>
+                     <li>Number of Moons: ${moons}</li>
                  </ol>
                  <img src="${imageUrl}">
                  alt="Image of ${name}`;
@@ -84,7 +84,7 @@ async function myFetch() {
     let planetsReturned;
     let url = "https://handlers.education.launchcode.org/static/planets.json"
     
-    return fetch(url).then(response => {
+    planetsReturned = await fetch(url).then(response => {
         if (!response.ok) {
             throw new Error("network response was not ok");
         }
@@ -93,16 +93,9 @@ async function myFetch() {
     .catch(error => {
 console.error("Fetch error", error);
     });
+    return planetsReturned;
 }
 
-myFetch().then(data => {
-    console.log("Planet data", data);
-})
-    
-    planetsReturned = await fetch().then(function (response) {
-    });
-
-    return planetsReturned;
 
 // Data is coming from API that need to be turned into JSON
 // don't set API to variable
